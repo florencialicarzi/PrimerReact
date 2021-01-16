@@ -1,0 +1,35 @@
+{
+    "todos": [
+        {
+            "title": "React",
+            "responsible": "Florencia",
+            "description": "entender los componentes",
+            "priority": "alta"
+        },
+        {
+            "title": "Bootstrap",
+            "responsible": "Florencia",
+            "description": "conocer los ClassName",
+            "priority": "media"
+        },
+        {
+            "title": "Python",
+            "responsible": "Florencia",
+            "description": "aprender el lenguaje",
+            "priority": "alta"
+        },
+        {
+            "title": "Sass",
+            "responsible": "Florencia",
+            "description": "aprender transiciones",
+            "priority": "baja"
+        },
+        {
+            "title": "Limpiar",
+            "responsible": "Florencia",
+            "description": "ni ganas de hacerlo",
+            "priority": "baja"
+        }
+    
+    ]
+}
