@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css'; //Importa el estilo
 
 import Navigation from './components/Navigation';
+import Cards from './components/Cards';
 import { todos } from './todos.json';
 
 //Esto no es html, es JSX
@@ -14,35 +15,14 @@ class App extends Component {
     }
   }
   render(){
-    const todos = this.state.todos.map((todo, i) =>{
-      return(
-        <div className= "col-md-4">
-            <div className= "card mt-4">
-              <div className="card-header">
-                <h3>{todo.title}</h3>
-                <span className="badge rounded-pill bg-danger">
-                  {todo.priority}
-                </span>
-              </div> 
-              <div className="card-body">                
-                <p>Descripcion: {todo.description}</p>
-                <p><mark>{todo.responsible}</mark></p>
-              </div>
-            </div>
-          </div>
-      )
-    })
+    
     console.log("Antes de renderizar los componentes")
     return (
       <div className="App">
 
         <Navigation titulo='Tareas pendientes' cantTodo= {this.state.todos.length} />
 
-        <div className="container">
-          <div className="row mt-5">
-            {todos}
-          </div>
-        </div>
+        <Cards mapeo= {this.state.todos.map}></Cards>
       </div>
     );
   }
