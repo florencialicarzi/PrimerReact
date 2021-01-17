@@ -4,6 +4,8 @@ import './App.css'; //Importa el estilo
 
 import Navigation from './components/Navigation';
 import { todos } from './todos.json';
+import TodoForm from './components/TodoForm';
+
 
 //Esto no es html, es JSX
 class App extends Component {
@@ -12,7 +14,23 @@ class App extends Component {
     this.state = {
       todos: todos
     }
+    this.handleAddTodo = this.handleAddTodo.bind(this);
   }
+
+  removeTodo(index) {
+    this.setState({
+      todos: this.state.todos.filter((e, i) => {
+        return i !== index
+      })
+    });
+  }
+
+  handleAddTodo(todo) {
+    this.setState({
+      todos: [...this.state.todos, todo]
+    })
+  }
+
   render(){
     const todos = this.state.todos.map((todo, i) =>{
       return(
@@ -28,6 +46,13 @@ class App extends Component {
                 <p>Descripcion: {todo.description}</p>
                 <p><mark>{todo.responsible}</mark></p>
               </div>
+              <div className="card-footer">
+              <button
+                className="btn btn-danger"
+                onClick={this.removeTodo.bind(this, i)}>
+                Eliminar
+              </button>
+            </div>
             </div>
           </div>
       )
@@ -39,8 +64,18 @@ class App extends Component {
         <Navigation titulo='Tareas pendientes' cantTodo= {this.state.todos.length} />
 
         <div className="container">
-          <div className="row mt-5">
-            {todos}
+          <div className="row mt-4">
+
+            <div className="col-md-4 text-center">
+              <TodoForm onAddTodo={this.handleAddTodo}></TodoForm>
+            </div>
+
+            <div className="col-md-8">
+              <div className="row">
+                {todos}
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
